@@ -1,7 +1,7 @@
 # CS2520_gui_TeamProject
 
 ##  Authors:
-### Ruben Barbero, Leonardo Davalos, Marie Philavong
+Ruben Barbero, Leonardo Davalos, Marie Philavong
 
 ## Requirements:
 You need PyQt6 in order to run this program.

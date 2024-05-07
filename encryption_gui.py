@@ -1,9 +1,9 @@
 # Most GUI Parts Created by: PyQt6 UI code generator 6.7.0
 
-# Authors: Ruben Barbero, Marie Philavong, Leonardo
+# Authors: Ruben Barbero, Marie Philavong, Leonardo Davalos
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtWidgets import QMessageBox, QErrorMessage
+from PyQt6.QtWidgets import QMessageBox
 import encryptionRSA
 from encryptionSimple import caesar_cipher, substitution_cipher, substitution_decrypt, vigenere_encrypt, vigenere_decrypt
 import random

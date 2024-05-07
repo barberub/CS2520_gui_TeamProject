@@ -11,7 +11,7 @@ Simply run encryption_gui.py.  Ensure encryptionRSA.py and encryptionSimple.py a
 
 ## Capabilities:
 At the current version, the GUI includes simple implementations of the following encryption and decryption methods:
-RSA (Asymetric encryption model)
-Caesar Cipher (Basic alphabetic shift)
-Substitution Cipher (Basic alphabetic substitution)
-Vigenere Cipher (Basic alphabetic shift based off of a keyword)
+- RSA (Asymetric encryption model)
+- Caesar Cipher (Basic alphabetic shift)
+- Substitution Cipher (Basic alphabetic substitution)
+- Vigenere Cipher (Basic alphabetic shift based off of a keyword)

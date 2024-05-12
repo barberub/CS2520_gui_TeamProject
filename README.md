@@ -2,6 +2,7 @@
 
 ##  Authors:
 Ruben Barbero, Leonardo Davalos, Marie Philavong
+ - Note: We worked on these files together prior to being uploaded to GitHub.
 
 ## Requirements:
 You need PyQt6 in order to run this program.
@@ -15,3 +16,9 @@ At the current version, the GUI includes simple implementations of the following
 - Caesar Cipher (Basic alphabetic shift)
 - Substitution Cipher (Basic alphabetic substitution)
 - Vigenere Cipher (Basic alphabetic shift based off of a keyword)
+
+## Files:
+ - CS2520_Project.ui: a .ui file to be used by QtDesigner or other Designer files to assist in the UI creation process.
+ - encryption_gui.py: The main file to be ran.  Contains all the UI code in python form.
+ - encryptionRSA.py: All methods, including testing, to deal with RSA encryption.
+ - encryptionSimple.py: Includes the methods for encrypting, decrypting, and testing Caesar Cipher, Substitution Cipher, and Vigenere Cipher.  

@@ -12,11 +12,33 @@ import random
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(419, 424)
+        MainWindow.resize(463, 495)
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
+        self.gridLayout.setObjectName("gridLayout")
+        self.inputLabel = QtWidgets.QLabel(parent=self.centralwidget)
+        self.inputLabel.setObjectName("inputLabel")
+        self.gridLayout.addWidget(self.inputLabel, 0, 0, 1, 1)
+        self.outputLabel = QtWidgets.QLabel(parent=self.centralwidget)
+        self.outputLabel.setObjectName("outputLabel")
+        self.gridLayout.addWidget(self.outputLabel, 0, 2, 1, 1)
+        self.inputField = QtWidgets.QPlainTextEdit(parent=self.centralwidget)
+        self.inputField.setObjectName("inputField")
+        self.gridLayout.addWidget(self.inputField, 1, 0, 1, 2)
+        self.outputField = QtWidgets.QPlainTextEdit(parent=self.centralwidget)
+        self.outputField.setObjectName("outputField")
+        self.gridLayout.addWidget(self.outputField, 1, 2, 1, 1)
+        self.encryptButton = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.encryptButton.setObjectName("encryptButton")
+        self.gridLayout.addWidget(self.encryptButton, 2, 0, 1, 1)
+        self.decryptButton = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.decryptButton.setObjectName("decryptButton")
+        self.gridLayout.addWidget(self.decryptButton, 2, 1, 1, 1)
+        self.moveInputToOutput = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.moveInputToOutput.setObjectName("moveInputToOutput")
+        self.gridLayout.addWidget(self.moveInputToOutput, 2, 2, 1, 1)
         self.encryptionOptions = QtWidgets.QTabWidget(parent=self.centralwidget)
-        self.encryptionOptions.setGeometry(QtCore.QRect(0, 240, 421, 171))
         self.encryptionOptions.setToolTipDuration(0)
         self.encryptionOptions.setObjectName("encryptionOptions")
         self.rsa = QtWidgets.QWidget()
@@ -49,7 +71,7 @@ class Ui_MainWindow(object):
         self.caesarKeyLabel.setGeometry(QtCore.QRect(120, 60, 121, 16))
         self.caesarKeyLabel.setObjectName("caesarKeyLabel")
         self.caesarSpinBox = QtWidgets.QSpinBox(parent=self.Caesar)
-        self.caesarSpinBox.setGeometry(QtCore.QRect(230, 60, 42, 22))
+        self.caesarSpinBox.setGeometry(QtCore.QRect(230, 60, 71, 22))
         self.caesarSpinBox.setMaximum(26)
         self.caesarSpinBox.setObjectName("caesarSpinBox")
         self.encryptionOptions.addTab(self.Caesar, "")
@@ -74,35 +96,15 @@ class Ui_MainWindow(object):
         self.vigenereKeyTextField.setGeometry(QtCore.QRect(50, 40, 321, 21))
         self.vigenereKeyTextField.setObjectName("vigenereKeyTextField")
         self.encryptionOptions.addTab(self.vigenere, "")
-        self.encryptButton = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.encryptButton.setGeometry(QtCore.QRect(10, 210, 75, 24))
-        self.encryptButton.setObjectName("encryptButton")
-        self.decryptButton = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.decryptButton.setGeometry(QtCore.QRect(110, 210, 75, 24))
-        self.decryptButton.setObjectName("decryptButton")
-        self.moveInputToOutput = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.moveInputToOutput.setGeometry(QtCore.QRect(250, 210, 151, 24))
-        self.moveInputToOutput.setObjectName("moveInputToOutput")
-        self.inputLabel = QtWidgets.QLabel(parent=self.centralwidget)
-        self.inputLabel.setGeometry(QtCore.QRect(10, 20, 49, 16))
-        self.inputLabel.setObjectName("inputLabel")
-        self.outputLabel = QtWidgets.QLabel(parent=self.centralwidget)
-        self.outputLabel.setGeometry(QtCore.QRect(240, 20, 49, 16))
-        self.outputLabel.setObjectName("outputLabel")
-        self.inputField = QtWidgets.QPlainTextEdit(parent=self.centralwidget)
-        self.inputField.setGeometry(QtCore.QRect(10, 40, 171, 151))
-        self.inputField.setObjectName("inputField")
-        self.outputField = QtWidgets.QPlainTextEdit(parent=self.centralwidget)
-        self.outputField.setGeometry(QtCore.QRect(240, 40, 171, 151))
-        self.outputField.setObjectName("outputField")
+        self.gridLayout.addWidget(self.encryptionOptions, 3, 0, 1, 3)
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(parent=MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
-        self.publicEncryptionKeyLabel.setBuddy(self.publicEncryptionKeyLineEdit)
-        self.privateDecryptionKeyLabel.setBuddy(self.privateDecryptionKeyLineEdit)
         self.inputLabel.setBuddy(self.inputField)
         self.outputLabel.setBuddy(self.outputField)
+        self.publicEncryptionKeyLabel.setBuddy(self.publicEncryptionKeyLineEdit)
+        self.privateDecryptionKeyLabel.setBuddy(self.privateDecryptionKeyLineEdit)
 
         # Linking button events to functions
         self.encryptButton.clicked.connect(self.encrypt)
@@ -182,7 +184,6 @@ class Ui_MainWindow(object):
             alphabetSet = set("abcdefghijklmnopqrstuvwxyz")
 
             # Error message if key does not contain all letters of the alphabet.
-            print(set(self.substitutionKeyTextField.text()) >= alphabetSet)
             if not (set(self.substitutionKeyTextField.text()) >= alphabetSet):
                 self.errorMessage.setText("Key needs to contain every letter in the alphabet once!")
                 self.errorMessage.exec()
@@ -254,7 +255,6 @@ class Ui_MainWindow(object):
             alphabetSet = set("abcdefghijklmnopqrstuvwxyz")
 
             # Error message if key does not contain all letters of the alphabet.
-            print(set(self.substitutionKeyTextField.text()) >= alphabetSet)
             if not (set(self.substitutionKeyTextField.text()) >= alphabetSet):
                 self.errorMessage.setText("Key needs to contain every letter in the alphabet once!")
                 self.errorMessage.exec()
@@ -266,7 +266,7 @@ class Ui_MainWindow(object):
                 self.errorMessage.exec()
                 return
 
-            cipherText = substitution_decrypt(inputText, self.substitutionKeyTextField.text())
+            plainText = substitution_decrypt(inputText, self.substitutionKeyTextField.text())
         ####################################################
 
         ####################################################
